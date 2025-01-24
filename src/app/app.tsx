@@ -12,11 +12,12 @@ function App() {
       return;
     }
 
-    if (window.electron.hasPemKey()) {
-      return;
-    }
-
     const fetchPemKeyPath = async () => {
+      const hasPemFile = await window.electron.hasPemKey();
+      if (hasPemFile) {
+        return;
+      }
+
       const filepath = await window.electron.openFile();
       if (filepath) {
         window.electron.setPemKey(filepath);

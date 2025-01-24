@@ -12,7 +12,7 @@ contextBridge.exposeInMainWorld("electron", {
   openFolder: () => ipcRenderer.invoke("dialog:selectFolder"),
   notifyReactReady: () => ipcRenderer.send("react-ready"),
   setPemKey: (filepath: string) => ipcRenderer.invoke("pma-set-key", filepath),
-  hasPemKey: () => ipcRenderer.send("has-pem-key"),
+  hasPemKey: () => ipcRenderer.invoke("has-pem-key"),
   loadKeys: (props: { hash: string; encryptedPassKey: string }) =>
     ipcRenderer.invoke("s3:getFileKeys", props),
   decryptFile: async (props: DecryptProps) =>

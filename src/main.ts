@@ -45,7 +45,7 @@ const createWindow = () => {
     mainWindow.show();
   });
 
-  ipcMain.on("has-pem-key", () => {
+  ipcMain.handle("has-pem-key", () => {
     return privKey && typeof privKey === "string" && privKey.length > 0;
   });
 
@@ -199,7 +199,8 @@ const createWindow = () => {
 app.on("ready", async () => {
   // Check to see if we have a key nearby
   try {
-    const file = await readFile(path.join(__dirname, "privKey.pem"));
+    const pemPath = path.join(process.cwd(), "privKey.pem");
+    const file = await readFile(pemPath);
     if (file) {
       privKey = file.toString();
     }
