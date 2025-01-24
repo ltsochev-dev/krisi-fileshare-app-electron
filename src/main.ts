@@ -18,6 +18,7 @@ if (started) {
 }
 
 let privKey: string = null;
+const isDev = process.env.NODE_ENV === "development";
 const S3_SETTINGS_ENCRYPTED = `SA843LONJlMyeK3e34ejOd4C98+kTLhV1USx8GdvudjVgWxh03LXDa9MBSZUYAtdIdCs0hsbVEbvZkvooYX3jTdtlkdN92/g9bzZl4w+Smiwh4y6P/Cl0bjUdzRfPuQo6n+64wTQOzfFu7zC8WfqbLmai0stiriMfeTq1HFTphf+0fiMff5ZHweFjT8WUM1JrGrHLlGdn/6PPYfwkrVg2/ubOxdODXcnqimtdJ4ChN7nDtrrndDmqFa8VP5GXR4k2NKNtXjl7mES9d/RQ0sqvn1KhJwo4VrJuErVhHUtKxpUGhvquEjpS2KAvrxE7Ov2SpQZUzb4LSfEh9seCOml2A==`;
 const METADATA_CACHE = new Map<string, Record<string, string>>();
 
@@ -28,6 +29,7 @@ const createWindow = () => {
     height: 600,
     show: false,
     webPreferences: {
+      devTools: isDev,
       preload: path.join(__dirname, "preload.js"),
     },
   });
