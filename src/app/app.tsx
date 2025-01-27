@@ -42,7 +42,6 @@ function App() {
 
     if (window.electron) {
       window.electron.notifyReactReady();
-
       fetchPassword();
     }
   }, []);

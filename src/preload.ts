@@ -8,6 +8,8 @@ contextBridge.exposeInMainWorld("electron", {
     ipcRenderer.invoke("get-password", encrypted),
   setPassword: (password: string) =>
     ipcRenderer.invoke("set-password", password),
+  passwordAvailable: (password: string) =>
+    ipcRenderer.invoke("main.init", password),
   openFile: () => ipcRenderer.invoke("dialog:openFile"),
   openFolder: () => ipcRenderer.invoke("dialog:selectFolder"),
   notifyReactReady: () => ipcRenderer.send("react-ready"),
@@ -15,6 +17,7 @@ contextBridge.exposeInMainWorld("electron", {
   hasPemKey: () => ipcRenderer.invoke("has-pem-key"),
   loadKeys: (props: { hash: string; encryptedPassKey: string }) =>
     ipcRenderer.invoke("s3:getFileKeys", props),
+  allFiles: () => ipcRenderer.invoke("s3:allFiles"),
   decryptFile: async (props: DecryptProps) =>
     ipcRenderer.invoke("app:decrypt", props),
   exit: (code: number) => ipcRenderer.invoke("exit", code),

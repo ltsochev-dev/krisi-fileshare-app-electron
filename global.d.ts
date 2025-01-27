@@ -1,19 +1,20 @@
 export {};
 
-interface DecryptProps {
-  file: string;
-  originalFilename: string;
-  outDir: string;
-  wrappedKey: string;
-  aesIv: string;
-  encryptedPasskey: string;
-}
-
 declare global {
+  interface DecryptProps {
+    file: string;
+    originalFilename: string;
+    outDir: string;
+    wrappedKey: string;
+    aesIv: string;
+    encryptedPasskey: string;
+  }
+
   interface Window {
     electron: {
       getPassword: (encrypted: string) => string;
       setPassword: (password: string) => string;
+      passwordAvailable: (password: string) => void;
       openFile: () => Promise<string>;
       openFolder: () => Promise<string>;
       hasPemKey: () => boolean;

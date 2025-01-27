@@ -162,6 +162,17 @@ export default function DragDropUpload() {
         >
           <BookKey /> Decrypt file
         </Button>
+        <Button
+          type="button"
+          size="lg"
+          className="w-full"
+          onClick={async () => {
+            const res = await window.electron.allFiles();
+            console.log({ res });
+          }}
+        >
+          <BookKey /> Get All Files
+        </Button>
       </div>
       {file && (
         <AesKeyAndIvDialog

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Kristina Kostova File Upload Decryptor</title>
+    <meta
+  http-equiv="Content-Security-Policy"
+  content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self';"
+/>
+
+  </head>
+  <body>
+    <div class="container">
+        <form id="pass-form">
+            <label for="passphrase">Passphrase</label>
+            <input type="password" name="password" value="" />
+        </form>
+    </div>
+    <script type="module" src="./renderer.ts"></script>
+  </body>
+</html>
